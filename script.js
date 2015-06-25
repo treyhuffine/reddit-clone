@@ -7,17 +7,23 @@ angular.module('reddit', ["ngRoute"])
       controller: "ListCtrl",
       templateUrl: "list.html"
     })
+    .when("/new", {
+      controll: "NewLinkCtrl",
+      templateUrl: "new.html"
+    })
     .otherwise({
       redirectTo: "/"
     });
 })
-.controller('ListCtrl', function($scope, $http){
-  $scope.links = [
+.service('linkService', function(){
+  this.links = [
     { title: 'Google', url: "http://google.com", description: "Google magic" },
     { title: 'Yahoo', url: "http://yahoo.com", description: "Yahooooo" }
   ];
-  $scope.fillForm = function() {
-        $scope.links.unshift($scope.link);
-        $scope.link = {};
-  };
+ })
+.controller('NewLinkCtrl', function($scope) {
+
+ })
+.controller('ListCtrl', function($scope, linkService){
+  $scope.links = linkService.links;
 });
