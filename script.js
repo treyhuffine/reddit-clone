@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('heimdall', [])
+angular.module('reddit', [])
 .controller('MainCtrl', function($scope){
 });
