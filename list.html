@@ -2,13 +2,17 @@
   Add new link
 </a>
 
-<div class="media" ng-repeat="link in links">
+<div class="media" ng-repeat="link in links track by $index">
   <div class="media-left">
     <a href="#/new">
       <img class="media-object" ng-src="..." alt="link">
     </a>
   </div>
   <div class="media-body">
+    <span class="glyph-container pull-right"
+          ng-click="removeLink($index)">
+      <p class="remove glyphicon glyphicon-trash"></p>
+    </span>
     <h4 class="media-heading"><a ng-href="{{link.url}}">{{link.title}}</a></h4>
     <p>
       {{link.description}}

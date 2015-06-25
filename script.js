@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reddit', ["ngRoute"])
+var notReddit = angular.module('reddit', ["ngRoute"])
 .config(function($routeProvider) {
   $routeProvider
     .when("/", {
@@ -23,6 +23,10 @@ angular.module('reddit', ["ngRoute"])
   this.storeLink = function(newLink) {
     this.links.unshift(newLink);
   };
+  this.removeLink = function(linkIndex) {
+    this.links.splice(linkIndex,1);
+    console.log(this.links);
+  };
  })
 .controller('NewLinkCtrl', function($scope, $location, linkService) {
   $scope.newLink = {};
@@ -34,4 +38,5 @@ angular.module('reddit', ["ngRoute"])
  })
 .controller('ListCtrl', function($scope, linkService){
   $scope.links = linkService.links;
+  $scope.removeLink = linkService.removeLink;
 });
