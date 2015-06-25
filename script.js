@@ -11,6 +11,10 @@ var notReddit = angular.module('reddit', ["ngRoute"])
       controller: "NewLinkCtrl",
       templateUrl: "new.html"
     })
+    .when("/details/:id", {
+      controller: "LinkDetailsCtrl",
+      templateUrl: "details.html"
+    })
     .otherwise({
       redirectTo: "/"
     });
@@ -25,18 +29,15 @@ var notReddit = angular.module('reddit', ["ngRoute"])
   };
   this.removeLink = function(linkIndex) {
     this.links.splice(linkIndex,1);
-    console.log(this.links);
   };
- })
-.controller('NewLinkCtrl', function($scope, $location, linkService) {
-  $scope.newLink = {};
-  $scope.addLinkAndRedirect = function() {
-    linkService.storeLink($scope.newLink);
-    $scope.newLink = {};
-    $location.path("/");
+  this.readLink = function(index) {
+    return this.links[index];
   };
  })
 .controller('ListCtrl', function($scope, linkService){
   $scope.links = linkService.links;
   $scope.removeLink = linkService.removeLink;
+})
+.controller('LinkDetailsCtrl', function($scope, linkService, $routeParams){
+  $scope.oneLink = linkService.readLink($routeParams.id)
 });
