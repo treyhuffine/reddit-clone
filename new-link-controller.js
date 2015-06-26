@@ -5,4 +5,4 @@ notReddit.controller('NewLinkCtrl', function($scope, $location, linkService) {
     $scope.newLink = {};
     $location.path("/");
   };
- })
+});
