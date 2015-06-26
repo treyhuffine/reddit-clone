@@ -1,10 +1,6 @@
 {
   "name": "pages",
   "version": "0.0.1",
-  "homepage": "https://github.com/IAmEddieDean/IAmEddieDean.github.io",
-  "authors": [
-    "Chris Oyler <christopher.oyler@gmail.com>"
-  ],
   "description": "pages example",
   "main": "index.html",
   "license": "MIT",
